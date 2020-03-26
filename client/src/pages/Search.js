@@ -9,7 +9,7 @@ function Search() {
     const [selectOptions, setSelectOptions] = useState(['Keyword', 'Author', 'Title', 'Subject']);
     const [selectValue, setSelectValue] = useState('');
     const [inputValue, setInputValue] = useState('');
-    const [apiBooks, setApiBooks] = useState('');
+    const [apiBooks, setApiBooks] = useState([]);
 
     // useEffect( () => { 
 
@@ -32,10 +32,9 @@ function handleSelectValueChange(event) {
 
 function handleSearchSubmit () {
 
-    // const apiKey = process.env.REACT_APP_GOOGLE_BOOKS_API_KEY
     API.searchGoogleBooks(selectValue, inputValue)
         .then(respObj => {
-            setApiBooks(respObj);
+            setApiBooks(respObj.data);
             console.log(respObj);
         })
         .catch(err => console.log(err))
@@ -78,18 +77,40 @@ function handleSearchSubmit () {
         </Section >
         <Section class={'section'}>
             <Container fluid={'true'}>
+                { apiBooks.length ? 
                 <Tile ancestor={true}>
-                    <Tile parent={true}>
+                    <Tile parent={true} vertical={true}>
                         <article className='tile'>
                             <div className='content'>
-                                <img alt='Book Image'></img>
+                                <img src={apiBooks[0].image} href={apiBooks[0].link} alt='Book Image'></img>
                             </div>
                         </article>
                     </Tile>
+                    <Tile parent={true}>
+                        <Tile parent={false}>
+                            <article className='tile'>
+                                <div className='content'>
+                                    <h1>{apiBooks[0].title}</h1>
+                                    <h3>{!apiBooks[0].subtitle ? '' : apiBooks[0].subtitle }</h3>
+                                    <p>{apiBooks[0].authors.toString()}</p>
+                                </div>
+                            </article>
+                        </Tile>
+                        <Tile parent={false}>
+                            <article className ='tile'>
+                                <div className='content'>
+                                    <p>{apiBooks[0].preview}</p>
+                                </div>
+                            </article>
+                        </Tile>
+                    </Tile> 
+                </Tile> : 
+                <Tile>
                     <p>
-                        where book result go
+                        No results
                     </p>
                 </Tile>
+                }
             </Container>
         </Section>
         </div>
