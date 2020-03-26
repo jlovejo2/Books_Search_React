@@ -5,7 +5,7 @@ export function Input(props) {
 
         <div className="field">
             <div className="control">
-                <input className={`input ${props.inputColor}  ${props.inputSize} is-hovered`} type="text" placeholder={`${props.inputPlaceholder}`} onChange={props.selectSearch} {...props} />
+                <input className={`input ${props.inputcolor}  ${props.inputsize} is-hovered`} type="text" {...props} />
             </div>
         </div>
 

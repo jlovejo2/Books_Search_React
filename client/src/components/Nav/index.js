@@ -5,10 +5,10 @@ function Nav() {
         <nav className="navbar" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
                 <a className="navbar-item is-paddingless" href="https://books.google.com/">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Google_Books_logo_2015.svg/1200px-Google_Books_logo_2015.svg.png" alt="Google Books logo 2015.svg" alt="logo" width="100" height="100"></img>
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Google_Books_logo_2015.svg/1200px-Google_Books_logo_2015.svg.png" alt="Google Books logo 2015.svg" width="100" height="100"></img>
                 </a>
                     {/* This burger menu will grab everything in the nav-bar menu class anda place it into a burger button */}
-                <button class="navbar-burger burger" aria-label="menu" aria-expanded="false">
+                <button className="navbar-burger burger" aria-label="menu" aria-expanded="false">
                     {/* These 3 empty span tags are required to create the three lines in the burger menu that shows up when screen size is reduced */}
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
@@ -26,13 +26,13 @@ function Nav() {
                         Saved
                     </a>
                     <div className="navbar-item has-dropdown is-hoverable">
-                        <a className="navbar-link" href=''>More</a>
+                        <div className="navbar-link">More</div>
                         <div className="navbar-dropdown">
-                            <a className="navbar-item" href=''>About</a>
-                            <a className="navbar-item" href=''>Jobs</a>
-                            <a className="navbar-item" href=''>Contact</a>
+                            <a className="navbar-item" href='/search'>About</a>
+                            <a className="navbar-item" href='/search'>Jobs</a>
+                            <a className="navbar-item" href='/saved'>Contact</a>
                             <hr className="navbar-divider" />
-                            <a className="navbar-item" href=''>Report an issue</a>
+                            <a className="navbar-item" href='/saved'>Report an issue</a>
                         </div>
                     </div>
                 </div>

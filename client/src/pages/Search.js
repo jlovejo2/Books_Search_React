@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Input, Select, Option } from '../components/SearchBar'
-import { Col, Section, Container, Tile } from '../components/Grid';
+import { Section, Container, Tile } from '../components/Grid';
 // import { set } from 'mongoose';
 import API from '../utils/API';
 
 function Search() {
 
-    const [selectOptions, setSelectOptions] = useState(['Keyword', 'Author', 'Title', 'Subject']);
+    const [selectOptions, setSelectOptions] = useState([]);
     const [apiSearchObj, setApiSearchObj] = useState({})
     // const [selectValue, setSelectValue] = useState('');
     // const [inputValue, setInputValue] = useState('');
     const [apiBooks, setApiBooks] = useState([]);
 
     useEffect(() => {
+        setSelectOptions(['Keyword', 'Author', 'Title', 'Subject']);
 
-        handleSearchSubmit()
+        handleSearchSubmit();
 
     }, [])
 
@@ -49,7 +50,7 @@ function Search() {
         console.log(apiSearchObj.selectValue);
         console.log(apiSearchObj.inputValue);
 
-        if (apiSearchObj.selectValue !== 'undefined' || apiSearchObj.inputValue !== 'undefined') {
+        if (!apiSearchObj.selectValue || !apiSearchObj.inputValue) {
             API.searchGoogleBooks(apiSearchObj.selectValue, apiSearchObj.inputValue)
                 .then(respObj => {
                     setApiBooks(respObj.data);
@@ -59,7 +60,6 @@ function Search() {
         } else {
             console.log('search criteria undefined');
         }
-
     }
 
     return (
@@ -80,10 +80,10 @@ function Search() {
                             </Tile>
                             <Tile parent={false} customClass={'is-8 is-center'}>
                                 <Input
-                                    inputColor='is-success'
-                                    inputSize='is-medium'
-                                    inputPlaceholder='Input search text here'
-                                    selectSearch={handleInputChange}
+                                    inputcolor={'is-success'}
+                                    inputsize={'is-medium'}
+                                    placeholder='Input search text here'
+                                    onChange={handleInputChange}
                                     name={'inputValue'}
                                 >
                                 </Input>
@@ -102,16 +102,16 @@ function Search() {
                     {apiBooks.length ?
                         apiBooks.map(book => {
                             return (
-                                <Tile ancestor={true} customClass={'notification is-warning'}>
+                                <Tile ancestor={true} customClass={'notification is-dark'} key={book.googleID}>
                                     <Tile parent={true} vertical={false} customClass={''} >
-                                        <Tile parent={false} customClass={'notification is-success is-2 image is-1by2'}>
+                                        <Tile parent={false} customClass={'notification is-warning is-2 image is-1by2'}>
                                             <figure className='tile is-child'>
-                                                <img src={book.image} href={book.link} alt='Book Image'></img>
+                                                <img src={book.image} href={book.link} alt='Book Cover'></img>
                                             </figure>
                                         </Tile>
                                         <Tile parent={false} customClass={'is-10'}>
                                             {/* <Tile parent={true}> */}
-                                            <Tile parent={false} vertical={true} customClass={'notification is-primary'}>
+                                            <Tile parent={false} vertical={true} customClass={'notification is-link'}>
                                                 <article className='tile'>
                                                     <div className='content'>
                                                         <h1>{book.title}</h1>
@@ -120,7 +120,7 @@ function Search() {
                                                     </div>
                                                 </article>
                                             </Tile>
-                                            <Tile parent={false} customClass={'notification is-info'}>
+                                            <Tile parent={false} customClass={'notification is-link'}>
                                                 <article className='tile'>
                                                     <div className='content'>
                                                         <p>{book.preview}</p>
