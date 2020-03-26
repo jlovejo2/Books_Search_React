@@ -4,7 +4,7 @@ import React from 'react';
 function Hero(props) {
 
     return (
-        <section clasName="hero">
+        <section className="hero">
             <div className="hero-body">
                 <div className="container">
                     <h1 className="title">

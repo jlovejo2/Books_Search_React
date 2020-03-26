@@ -13,9 +13,9 @@ function Search() {
     const [apiBooks, setApiBooks] = useState([]);
 
     useEffect(() => {
-        setSelectOptions(['Keyword', 'Author', 'Title', 'Subject']);
 
-        handleSearchSubmit();
+        setSelectOptions(['Keyword', 'Author', 'Title', 'Subject']);
+        console.log(apiBooks);
 
     }, [])
 
@@ -51,14 +51,15 @@ function Search() {
         console.log(apiSearchObj.inputValue);
 
         if (!apiSearchObj.selectValue || !apiSearchObj.inputValue) {
+            console.log('search criteria undefined');
+        } else {
+            
             API.searchGoogleBooks(apiSearchObj.selectValue, apiSearchObj.inputValue)
                 .then(respObj => {
                     setApiBooks(respObj.data);
                     console.log(respObj);
                 })
                 .catch(err => console.log(err))
-        } else {
-            console.log('search criteria undefined');
         }
     }
 
