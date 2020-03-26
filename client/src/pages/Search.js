@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Input, Select, Option } from '../components/SearchBar'
 import { Col, Section, Container, Tile } from '../components/Grid';
-import { set } from 'mongoose';
+// import { set } from 'mongoose';
 import API from '../utils/API';
 
 function Search() {
@@ -9,7 +9,7 @@ function Search() {
     const [selectOptions, setSelectOptions] = useState(['Keyword', 'Author', 'Title', 'Subject']);
     const [selectValue, setSelectValue] = useState('');
     const [inputValue, setInputValue] = useState('');
-    let [query, setQuery] = useState('');
+    const [apiBooks, setApiBooks] = useState('');
 
     // useEffect( () => { 
 
@@ -35,7 +35,8 @@ function handleSearchSubmit () {
     // const apiKey = process.env.REACT_APP_GOOGLE_BOOKS_API_KEY
     API.searchGoogleBooks(selectValue, inputValue)
         .then(respObj => {
-            console.log(respObj)
+            setApiBooks(respObj);
+            console.log(respObj);
         })
         .catch(err => console.log(err))
     
@@ -77,7 +78,14 @@ function handleSearchSubmit () {
         </Section >
         <Section class={'section'}>
             <Container fluid={'true'}>
-                <Tile>
+                <Tile ancestor={true}>
+                    <Tile parent={true}>
+                        <article className='tile'>
+                            <div className='content'>
+                                <img alt='Book Image'></img>
+                            </div>
+                        </article>
+                    </Tile>
                     <p>
                         where book result go
                     </p>
