@@ -5,7 +5,7 @@ export function Input(props) {
 
         <div className="field">
             <div className="control">
-                <input className={`input ${props.inputColor}  ${props.inputSize} is-hovered`} type="text" placeholder={`${props.inputPlaceholder}`} onChange={props.selectSearch} />
+                <input className={`input ${props.inputColor}  ${props.inputSize} is-hovered`} type="text" placeholder={`${props.inputPlaceholder}`} onChange={props.selectSearch} {...props} />
             </div>
         </div>
 
@@ -15,7 +15,7 @@ export function Input(props) {
 export function Select(props) {
 
     return (
-        <div className="select" onChange={props.selectChange} value={props.selectSearch}>
+        <div className="select" {...props}>
             <select>
                 {props.children}
             </select>

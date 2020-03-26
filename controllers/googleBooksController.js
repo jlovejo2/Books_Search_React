@@ -32,8 +32,9 @@ module.exports = {
                 const newApiArr = receivedData.map( apiObject => {
                     let newApiObj = {
                         title: apiObject.volumeInfo.title,
-                        subtitle: apiObject.volumeInfo.subtitle,
                         authors: apiObject.volumeInfo.authors,
+                        subtitle: apiObject.volumeInfo.subtitle,
+                        // textSnip: apiObject.searchInfo.textSnippet,
                         image: apiObject.volumeInfo.imageLinks.thumbnail,
                         preview: apiObject.volumeInfo.description,
                         link: apiObject.volumeInfo.infoLink,
