@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.tileButton {
+  margin: 5px;
+}
+
+.bookItem {
+  margin-bottom: 15px !important;
+}
