@@ -23,8 +23,8 @@ module.exports = {
         //This code performs the call to the google books api using axios and the query set by if-else statments above
         axios.get(setQuery)
             .then(booksObj => {
+                console.log('getting books from Google API')
                 const receivedData = booksObj.data.items
-                console.log(booksObj.data.items);
                 
                 //Manipulating the content of the data received from Google Books Api
                 //It is a large object with more data than is needed on the fron-end.
