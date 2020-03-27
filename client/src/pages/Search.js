@@ -66,6 +66,14 @@ function Search() {
         }
     }
 
+    function handleSaveBook(event) {
+        console.log('saving book');
+        const toSave = apiBooks.filter(book => book.googleID === event.target.value )
+
+        API.saveBook(toSave[0])
+            .then(resp => console.log(resp));
+    }
+
     return (
         <div>
 
@@ -129,7 +137,7 @@ function Search() {
                                                     <button className='button tileButton' href={book.link}>
                                                         View
                                                     </button>
-                                                    <button className='button tileButton'>
+                                                    <button className='button tileButton' onClick={handleSaveBook} value={book.googleID}>
                                                         Save
                                                     </button>
                                                 </Tile>

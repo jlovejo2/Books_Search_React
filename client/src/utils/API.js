@@ -4,11 +4,11 @@ import axios from "axios";
 export default {
 
   searchGoogleBooks: function(selectValue, inputValue) {
-    return axios.get("/api/googleBooks/" + selectValue + "/" + inputValue);
+    return axios.get("/googleBooks/" + selectValue + "/" + inputValue);
   },
 
   saveBook: function(bookObj) {
-    return axios.post("/api/savedBooks/" + bookObj);
+    return axios.post("/api/savedBooks/", bookObj);
   },
 
   findAllSavedBooks: function() {

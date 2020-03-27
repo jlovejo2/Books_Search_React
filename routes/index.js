@@ -1,27 +1,22 @@
-//Imports express npm
-const express = require('express');
+const path = require("path");
+const router = require("express").Router();
+const apiRoutes = require('./api');
+const googleBooksController = require('../controllers/googleBooksController');
 
-//calls the express.router method
-const router = express.Router();
-const apiController = require("../controllers/googleBooksController");
-const savedBooksController = require("../controllers/savedBooksController");
+// API Routes
+router.use('/api', apiRoutes);
 
+//External API routes
+router.route('/googleBooks/:selectValue/:inputValue')
+    .get(googleBooksController.getBooks)
 
-
-//Matches with the url specified in the route('')
-router.route('/api/googleBooks/:selectValue/:inputValue')
-    .get(apiController.getBooks)
-
-    
-// Matches with "/api/books"
-router.route("/api/savedBooks")
-      .get(savedBooksController.findAll)
-      .post(savedBooksController.create);
-    
-// Matches with "/api/books/:id"
-router.route("api/savedBooks/:id")
-      .get(savedBooksController.findById)
-      .delete(savedBooksController.remove);
-     
+// If no API routes are hit, send the React app
+// router.use(function(req, res) {
+//   res.sendFile(path.join(__dirname, "../client/build/index.html"));
+// });
 
 module.exports = router;
+
+
+
+
