@@ -4,6 +4,7 @@ const express = require('express');
 //calls the express.router method
 const router = express.Router();
 const apiController = require("../controllers/googleBooksController");
+const savedBooksController = require("../controllers/savedBooksController");
 
 
 
@@ -11,17 +12,16 @@ const apiController = require("../controllers/googleBooksController");
 router.route('/api/googleBooks/:selectValue/:inputValue')
     .get(apiController.getBooks)
 
-
-
-
-// // Matches with "/api/books"
-// router.route("/")
-//   .get(booksController.findAll)
-//   .post(booksController.create);
-
-// // Matches with "/api/books/:id"
-// router
-//   .route("/:query")
-//   .get()
+    
+// Matches with "/api/books"
+router.route("/api/books")
+      .get(savedBooksController.findAll)
+      .post(savedBooksController.create);
+    
+// Matches with "/api/books/:id"
+router.route("api/books/:id")
+      .get(savedBooksController.findById)
+      .delete(savedBooksController.remove);
+     
 
 module.exports = router;
