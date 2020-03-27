@@ -17,7 +17,9 @@ function Search() {
         setSelectOptions(['Keyword', 'Author', 'Title', 'Subject']);
         console.log(apiBooks);
 
-    }, [])
+
+
+    }, [apiBooks])
 
     function handleInputChange(event) {
 
@@ -25,7 +27,7 @@ function Search() {
         console.log(event.target.value);
         const { name, value } = event.target;
         setApiSearchObj({ ...apiSearchObj, [name]: value })
-        console.log(apiSearchObj);
+        console.log(apiBooks);
     };
 
     function handleSelectChange(event) {
@@ -33,6 +35,7 @@ function Search() {
         const value = event.target.value;
         const name = 'selectValue'
         setApiSearchObj({ ...apiSearchObj, [name]: value })
+        console.log(apiBooks);
     }
     // function handleInputValueChange(event) {
 
@@ -53,14 +56,22 @@ function Search() {
         if (!apiSearchObj.selectValue || !apiSearchObj.inputValue) {
             console.log('search criteria undefined');
         } else {
-            
+
             API.searchGoogleBooks(apiSearchObj.selectValue, apiSearchObj.inputValue)
                 .then(respObj => {
                     setApiBooks(respObj.data);
-                    console.log(respObj);
+                    console.log(apiBooks);
                 })
                 .catch(err => console.log(err))
         }
+    }
+
+    function handleSaveBook(event) {
+        console.log('saving book');
+        const toSave = apiBooks.filter(book => book.googleID === event.target.value )
+
+        API.saveBook(toSave[0])
+            .then(resp => console.log(resp));
     }
 
     return (
@@ -103,33 +114,46 @@ function Search() {
                     {apiBooks.length ?
                         apiBooks.map(book => {
                             return (
-                                <Tile ancestor={true} customClass={'notification is-dark'} key={book.googleID}>
+                                <Tile ancestor={true} customClass={'notification is-dark bookItem'} key={book.googleID}>
                                     <Tile parent={true} vertical={false} customClass={''} >
-                                        <Tile parent={false} customClass={'notification is-warning is-2 image is-1by2'}>
+                                        <Tile parent={false} customClass={'figure notification is-warning is-2 image is-1by2'}>
                                             <figure className='tile is-child'>
                                                 <img src={book.image} href={book.link} alt='Book Cover'></img>
                                             </figure>
                                         </Tile>
                                         <Tile parent={false} customClass={'is-10'}>
-                                            {/* <Tile parent={true}> */}
-                                            <Tile parent={false} vertical={true} customClass={'notification is-link'}>
-                                                <article className='tile'>
-                                                    <div className='content'>
-                                                        <h1>{book.title}</h1>
-                                                        <h3>{!book.subtitle ? 'Enjoy the read!' : book.subtitle}</h3>
-                                                        <p>Authors: {!book.authors ? ' No Authors Listed' : book.authors.toString()}</p>
-                                                    </div>
-                                                </article>
+
+                                            <Tile parent={true} vertical={false} customClass={'notification is-link'}>
+                                                <Tile parent={false} customClass={'is-6'}>
+                                                    <article className='tile'>
+                                                        <div className='content'>
+                                                            <h1>{book.title}</h1>
+                                                            <h3>{!book.subtitle ? 'Enjoy the read!' : book.subtitle}</h3>
+                                                            <p>Authors: {!book.authors ? ' No Authors Listed' : book.authors.toString()}</p>
+                                                        </div>
+                                                    </article>
+                                                </Tile>
+                                                <Tile parent={false}>
+                                                    <button className='button tileButton' href={book.link}>
+                                                        View
+                                                    </button>
+                                                    <button className='button tileButton' onClick={handleSaveBook} value={book.googleID}>
+                                                        Save
+                                                    </button>
+                                                </Tile>
                                             </Tile>
-                                            <Tile parent={false} customClass={'notification is-link'}>
+
+                                            <Tile parent={true} customClass={'notification is-link'}>
                                                 <article className='tile'>
                                                     <div className='content'>
                                                         <p>{book.preview}</p>
                                                     </div>
                                                 </article>
                                             </Tile>
+
                                             {/* </Tile> */}
                                         </Tile>
+
                                     </Tile>
                                 </Tile>
                             )
