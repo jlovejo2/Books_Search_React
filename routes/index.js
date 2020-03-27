@@ -14,12 +14,12 @@ router.route('/api/googleBooks/:selectValue/:inputValue')
 
     
 // Matches with "/api/books"
-router.route("/api/books")
+router.route("/api/savedBooks")
       .get(savedBooksController.findAll)
       .post(savedBooksController.create);
     
 // Matches with "/api/books/:id"
-router.route("api/books/:id")
+router.route("api/savedBooks/:id")
       .get(savedBooksController.findById)
       .delete(savedBooksController.remove);
      
