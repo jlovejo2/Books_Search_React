@@ -11,11 +11,18 @@ function Saved() {
     const [activateModal, setActivateModal] = useState(false);
 
     useEffect(() => {
+        console.log('useEffect')
         getSavedBooks()
         // console.log(setApiBooks);
-    }, [apiBooks])
+    }, [activateModal])
+
+    function handleCloseModal() {
+        console.log('closing Modal');
+        setActivateModal(false);
+    }
 
     function getSavedBooks() {
+        console.log('Getting Saved Books');
         API.findAllSavedBooks()
             .then(resp => {
                 console.log(resp.data)
@@ -25,11 +32,12 @@ function Saved() {
     }
 
     function handleDeleteBook(event) {
+        const bookID = event.target.value;
         console.log(event.target.value);
         API.removeBook(event.target.value)
             .then(resp => {
                 console.log(resp);
-                if (resp.data._id === event.target.value) {
+                if (resp.data._id === bookID) {
                     console.log('book deleted')
                     setActivateModal(true)
                 }
@@ -43,8 +51,8 @@ function Saved() {
                 value={{ apiBooks, handleDeleteBook }}>
                 <BookResults saveOrDelete={false} />
             </BooksContext.Provider>
-            <Modal title={'Please read ...'} active={activateModal}>
-                Book has been deleted
+            <Modal title={'Book has been deleted!'} active={activateModal} closeButton={handleCloseModal}>
+                Book has been deleted please enjoy the rest of the site.
             </Modal>
         </div>
     )
