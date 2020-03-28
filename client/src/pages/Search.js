@@ -3,7 +3,7 @@ import { Input, Select, Option } from '../components/SearchBar'
 import { Section, Container, Tile } from '../components/Grid';
 import BookResults from '../components/bookResults';
 import Button from '../components/Button';
-// import { set } from 'mongoose';
+import Modal from '../components/Modal';
 import API from '../utils/API';
 import BooksContext from '../utils/booksContext';
 
@@ -14,6 +14,7 @@ function Search() {
     // const [selectValue, setSelectValue] = useState('');
     // const [inputValue, setInputValue] = useState('');
     const [apiBooks, setApiBooks] = useState([]);
+    const [activateModal, setActivateModal] = useState(false);
 
     useEffect(() => {
 
@@ -21,6 +22,11 @@ function Search() {
         console.log(apiBooks);
 
     }, [apiBooks])
+
+    function handleCloseModal() {
+        console.log('closing Modal');
+        setActivateModal(false);
+    }
 
     function handleInputChange(event) {
 
@@ -72,7 +78,10 @@ function Search() {
         const toSave = apiBooks.filter(book => book.googleID === event.target.value )
 
         API.saveBook(toSave[0])
-            .then(resp => console.log(resp));
+            .then(resp => {
+                console.log(resp)
+                setActivateModal(true);
+            });
     }
 
     return (
@@ -113,6 +122,9 @@ function Search() {
                     <BookResults saveOrDelete={true} />
                 </BooksContext.Provider>
             </Section >
+            <Modal title={'Book Saved!!'} active={activateModal} closeButton={handleCloseModal}>
+                This book has been saved and can be viewed by clicking on the saved page link.
+            </Modal>
         </div>
     )
 }

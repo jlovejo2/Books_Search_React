@@ -36,7 +36,7 @@ function BookResults(props) {
                                                     View
                                                 </Button>
                                                 {props.saveOrDelete ?
-                                                    <Button onClick={handleSaveBook} value={book._id}>
+                                                    <Button onClick={handleSaveBook} value={book.googleID}>
                                                         Save
                                                     </Button>
                                                     :

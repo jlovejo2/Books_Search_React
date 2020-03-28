@@ -6,18 +6,24 @@ const apiKey = process.env.MY_GOOGLE_BOOKS_API_KEY;
 module.exports = {
 
     getBooks: function (req, res) {
-
+        console.log('enter Get Books')
+        console.log(req.params.selectValue);
+        console.log(req.params.inputValue);
         let setQuery = '';
 
         //This grouping of if-else statements determines the query that is used to call Books from the google books api
         //The query is based on what the user selected in the select divs and what they typed in the input.
-        if (req.params.selectValue === 'Title') {
+        if (req.params.selectValue == 'Title') {
+            console.log('search by title')
             setQuery = "https://www.googleapis.com/books/v1/volumes?q=" + req.params.inputValue + "+intitle:" + req.params.inputValue + "&printType=books&orderBy=relevance&key=" + apiKey;
-        } else if (req.params.electValue === 'Author') {
-            setQuery = "https://www.googleapis.com/books/v1/volumes?q=" + req.params.inputValue + "+inauthor" + req.params.inputValue + "&printType=books&orderBy=relevance&key=" + apiKey;
-        } else if (req.params.selectValue === 'Subject') {
+        } else if (req.params.selectValue == 'Author') {
+            console.log('search by author')
+            setQuery = "https://www.googleapis.com/books/v1/volumes?q=+inauthor:" + req.params.inputValue + "&printType=books&orderBy=relevance&key=" + apiKey;
+        } else if (req.params.selectValue == 'Subject') {
+            console.log('search by subject')
             setQuery = "https://www.googleapis.com/books/v1/volumes?q=" + req.params.inputValue + "+subject" + req.params.inputValue + "&printType=books&orderBy=relevance&key=" + apiKey;
         } else {
+            console.log('else')
             setQuery = "https://www.googleapis.com/books/v1/volumes?q=" + req.params.inputValue + "&printType=books&orderBy=relevance&key=" + apiKey;
         }
         console.log(setQuery);
