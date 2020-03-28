@@ -110,7 +110,7 @@ function Search() {
                 </Container>
                 <BooksContext.Provider 
                 value={{ apiBooks, handleSaveBook}}>
-                    <BookResults />
+                    <BookResults saveOrDelete={true} />
                 </BooksContext.Provider>
             </Section >
         </div>

@@ -2,7 +2,8 @@ import React from "react";
 
 const BooksContext = React.createContext({
   apiBooks: [],
-  handleBtnClick: () => {}
+  handleSaveBook: () => {},
+  handleDeleteBook: () => {},
 });
 
 export default BooksContext;

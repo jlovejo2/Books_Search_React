@@ -5,7 +5,7 @@ import Button from '../Button';
 
 function BookResults(props) {
 
-    const { apiBooks, handleBtnClick } = useContext(BooksContext)
+    const { apiBooks, handleSaveBook, handleDeleteBook } = useContext(BooksContext)
 
     return (
         <Section class={'section'}>
@@ -21,7 +21,6 @@ function BookResults(props) {
                                         </figure>
                                     </Tile>
                                     <Tile parent={false} customClass={'is-10'}>
-
                                         <Tile parent={true} vertical={false} customClass={'notification is-link'}>
                                             <Tile parent={false} customClass={'is-6'}>
                                                 <article className='tile'>
@@ -37,18 +36,16 @@ function BookResults(props) {
                                                     View
                                                 </Button>
                                                 {props.saveOrDelete ?
-                                                    <Button onClick={handleBtnClick} value={book.googleID}>
+                                                    <Button onClick={handleSaveBook} value={book._id}>
                                                         Save
                                                     </Button>
                                                     :
-                                                    <Button onClick={handleBtnClick} value={book.googleID}>
+                                                    <Button onClick={handleDeleteBook} value={book._id}>
                                                         Delete
                                                     </Button>
                                                 }
-
                                             </Tile>
                                         </Tile>
-
                                         <Tile parent={true} customClass={'notification is-link'}>
                                             <article className='tile'>
                                                 <div className='content'>
@@ -56,10 +53,7 @@ function BookResults(props) {
                                                 </div>
                                             </article>
                                         </Tile>
-
-                                        {/* </Tile> */}
                                     </Tile>
-
                                 </Tile>
                             </Tile>
                         )
@@ -72,7 +66,6 @@ function BookResults(props) {
                 }
             </Container>
         </Section>
-
     )
 
 }
