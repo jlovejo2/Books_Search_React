@@ -15,8 +15,7 @@ const SavedBookSchema = new Schema(
       type: String,
     },
     image: {
-      data: Buffer,
-      contentType: String
+      type: String
     },
     preview: {
       type: String,
