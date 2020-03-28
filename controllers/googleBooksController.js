@@ -1,4 +1,5 @@
 const axios = require('axios');
+const func = require('./functions');
 
 const apiKey = process.env.MY_GOOGLE_BOOKS_API_KEY;
 
@@ -19,7 +20,7 @@ module.exports = {
         } else {
             setQuery = "https://www.googleapis.com/books/v1/volumes?q=" + req.params.inputValue + "&printType=books&orderBy=relevance&key=" + apiKey;
         }
-
+        console.log(setQuery);
         //This code performs the call to the google books api using axios and the query set by if-else statments above
         axios.get(setQuery)
             .then(booksObj => {
@@ -35,7 +36,7 @@ module.exports = {
                         authors: apiObject.volumeInfo.authors,
                         subtitle: apiObject.volumeInfo.subtitle,
                         // textSnip: apiObject.searchInfo.textSnippet,
-                        image: apiObject.volumeInfo.imageLinks.thumbnail,
+                        image: func.imageExists(apiObject.volumeInfo.imageLinks),
                         preview: apiObject.volumeInfo.description,
                         link: apiObject.volumeInfo.infoLink,
                         googleID: apiObject.id
