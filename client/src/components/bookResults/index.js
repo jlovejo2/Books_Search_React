@@ -32,9 +32,9 @@ function BookResults(props) {
                                                 </article>
                                             </Tile>
                                             <Tile parent={false} customClass={'is-4 has-text-right'}>
-                                                <Button href={book.link}>
+                                                <a href={book.link} className='button tileButton'>
                                                     View
-                                                </Button>
+                                                </a>
                                                 {props.saveOrDelete ?
                                                     <Button onClick={handleSaveBook} value={book.googleID}>
                                                         Save
@@ -62,7 +62,7 @@ function BookResults(props) {
                         <Tile ancestor={true}>
                             <Tile parent={true}>
                                 <Tile parent={false} customClass={'content'}>
-                                    <p>
+                                    <p className='noresults'>
                                         No book results to display
                                     </p>
                                 </Tile>
