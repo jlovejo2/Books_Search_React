@@ -13,17 +13,17 @@ function BookResults(props) {
                 {apiBooks.length ?
                     apiBooks.map(book => {
                         return (
-                            <Tile ancestor={true} customClass={'notification is-dark bookItem'} key={book.googleID}>
+                            <Tile ancestor={true} customClass={'notification is-dark bookItem has-text-centered'} key={book.googleID}>
                                 <Tile parent={true} vertical={false} customClass={''} >
                                     <Tile parent={false} customClass={'figure notification is-warning is-2 image is-1by2'}>
                                         <figure className='tile is-child'>
                                             <img src={book.image} href={book.link} alt='Book Cover'></img>
                                         </figure>
                                     </Tile>
-                                    <Tile parent={false} customClass={'is-10'}>
-                                        <Tile parent={true} vertical={false} customClass={'notification is-link'}>
-                                            <Tile parent={false} customClass={'is-6'}>
-                                                <article className='tile'>
+                                    <Tile parent={false} customClass={'is-10 notification is-link'}>
+                                        <Tile parent={true} vertical={false} customClass={'has-text-centered'}>
+                                            <Tile parent={false} customClass={'is-8'}>
+                                                <article className='has-text-centered'>
                                                     <div className='content'>
                                                         <h1>{book.title}</h1>
                                                         <h3>{!book.subtitle ? 'Enjoy the read!' : book.subtitle}</h3>
@@ -31,7 +31,7 @@ function BookResults(props) {
                                                     </div>
                                                 </article>
                                             </Tile>
-                                            <Tile parent={false}>
+                                            <Tile parent={false} customClass={'is-4 has-text-right'}>
                                                 <Button href={book.link}>
                                                     View
                                                 </Button>
@@ -46,7 +46,7 @@ function BookResults(props) {
                                                 }
                                             </Tile>
                                         </Tile>
-                                        <Tile parent={true} customClass={'notification is-link'}>
+                                        <Tile parent={true} customClass={''}>
                                             <article className='tile'>
                                                 <div className='content'>
                                                     <p>{book.preview}</p>

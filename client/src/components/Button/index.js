@@ -4,7 +4,7 @@ import './style.css';
 function Button(props) {
 
     return (
-        <button className={`button tileButton ${props.customClass}`} {...props}>
+        <button className={`button tileButton ${props.customclass}`} {...props}>
             {props.children}
         </button>
 

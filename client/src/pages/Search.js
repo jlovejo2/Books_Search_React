@@ -44,17 +44,6 @@ function Search() {
         setApiSearchObj({ ...apiSearchObj, [name]: value })
         console.log(apiBooks);
     }
-    // function handleInputValueChange(event) {
-
-    //     setInputValue(event.target.value);
-    //     console.log(inputValue);
-    // }
-
-    // function handleSelectValueChange(event) {
-
-    //     setSelectValue(event.target.value);
-    //     console.log(selectValue);
-    // }
 
     function handleSearchSubmit() {
         console.log(apiSearchObj.selectValue);
@@ -88,9 +77,9 @@ function Search() {
         <div>
             <Section classes={'section'}>
                 <Container fluid={true}>
-                    <Tile ancestor={true}>
-                        <Tile parent={true} customClass={'is-10 is-center'}>
-                            <Tile parent={false} customClass={'is-2 is-center'}>
+                    <Tile ancestor={true} customClass={''}>
+                        <Tile parent={true} customClass={'level'}>
+                            <div className='level-right'>
                                 <Select onChange={handleSelectChange} name={'name'} value={apiSearchObj.selectValue} >
                                     {
                                         selectOptions.map((value, index) => {
@@ -98,22 +87,23 @@ function Search() {
                                         })
                                     }
                                 </Select>
-                            </Tile>
-                            <Tile parent={false} customClass={'is-8 is-center'}>
+                            </div>
+                            <div className='level-item'>
                                 <Input
                                     inputcolor={'is-success'}
                                     inputsize={'is-medium'}
                                     placeholder='Input search text here'
                                     onChange={handleInputChange}
                                     name={'inputValue'}
+                                    size='100'
                                 >
                                 </Input>
-                            </Tile>
-                            <Tile parent={false}>
-                                <Button customClass='button is-dark is-medium is-hovered' onClick={handleSearchSubmit}>
+                            </div>
+                            <div className='level-left'>
+                                <Button customclass='button is-dark is-medium is-hovered' onClick={handleSearchSubmit}>
                                     Search
                                 </Button>
-                            </Tile>
+                            </div>
                         </Tile>
                     </Tile>
                 </Container>
