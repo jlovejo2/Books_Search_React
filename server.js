@@ -18,8 +18,11 @@ if (process.env.NODE_ENV === "production") {
 // Add routes
 app.use(routes);
 
+//for local connect to mongo
+//"mongodb://localhost/booksSearchReact"
+
 // Connect to the Mongo DB
-mongoose.connect(/*process.env.MONGODB_URI || */"mongodb://localhost/booksSearchReact",
+mongoose.connect(process.env.MONGODB_URI || `mongodb:${process.env.MLAB_USERNAME}:${process.env.MLAB_PASSWORD}@ds041593.mlab.com:41593/heroku_mw2qqk3w`,
 { 
     useNewUrlParser: true,
     useUnifiedTopology: true
