@@ -1,5 +1,6 @@
 .footer {
-    background-color:gray;
+    background-color: hsl(0,0%,21%);
+    color: white;
     border-top: 3px solid rgba(255,255,255,.5);
     width: 100%;
     padding: 5px !important;

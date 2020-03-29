@@ -8,6 +8,8 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background-image: url('./images/open-book-background.jpeg');
+  background-size: cover;
 }
 
 code {

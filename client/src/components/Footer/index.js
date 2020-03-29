@@ -6,7 +6,7 @@ function Footer() {
 
     return (
 
-        <div className="footer">
+        <div className="footer is-dark">
             <p>Copright&copy;</p>
         </div>
 

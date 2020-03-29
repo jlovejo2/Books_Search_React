@@ -2,7 +2,7 @@ import React from "react";
 
 function Nav() {
     return (
-        <nav className="navbar" role="navigation" aria-label="main navigation">
+        <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
                 <a className="navbar-item is-paddingless" href="https://books.google.com/">
                     <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Google_Books_logo_2015.svg/1200px-Google_Books_logo_2015.svg.png" alt="Google Books logo 2015.svg" width="100" height="100"></img>
