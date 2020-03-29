@@ -30,10 +30,10 @@ function App() {
               the inner routes can be written as either syntax */}
           <Route path="/">
             <Home />
-            <Route exact path='/saved'>
+            <Route exact path="/Saved">
               <Saved/>
             </Route>
-            <Route exact path='/search'>
+            <Route exact path="/Search">
               <Search/>
             </Route>
           </Route>

@@ -19,10 +19,10 @@ function Nav(props) {
             <div className={`navbar-menu ${props.burgerClass ? 'is-active' : ''}`}>
                 {/* The navbar-start class is a Bulma class that aligns the nav-items in it to the left of the nav div on page.  Needs to exist even if its empty */}
                 <div className="navbar-start">
-                    <a className="navbar-item" href='/search'>
+                    <a className="navbar-item" href="/Search">
                         Search
                     </a>
-                    <a className="navbar-item" href='/saved'>
+                    <a className="navbar-item" href="/Saved">
                         Saved
                     </a>
                     <div className="navbar-item has-dropdown is-hoverable">
