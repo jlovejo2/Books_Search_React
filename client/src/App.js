@@ -30,8 +30,12 @@ function App() {
               the inner routes can be written as either syntax */}
           <Route path="/">
             <Home />
-            <Route exact path='/Saved' component={Saved} />
-            <Route exact path='/Search' component={Search} />
+            <Route exact path='/saved'>
+              <Saved/>
+            </Route>
+            <Route exact path='/search'>
+              <Search/>
+            </Route>
           </Route>
         </Switch>
       </div>
