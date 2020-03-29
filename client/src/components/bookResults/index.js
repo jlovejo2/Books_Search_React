@@ -59,9 +59,15 @@ function BookResults(props) {
                         )
                     }) :
                     <Tile>
-                        <p>
-                            No results
-                            </p>
+                        <Tile ancestor={true}>
+                            <Tile parent={true}>
+                                <Tile parent={false} customClass={'content'}>
+                                    <p>
+                                        No book results to display
+                                    </p>
+                                </Tile>
+                            </Tile>
+                        </Tile>
                     </Tile>
                 }
             </Container>
