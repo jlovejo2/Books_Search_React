@@ -21,8 +21,8 @@ app.use(routes);
 //for local connect to mongo
 //"mongodb://localhost/booksSearchReact"
 
-// Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || `mongodb://${process.env.MLAB_USERNAME}:${process.env.MLAB_PASSWORD}@ds041593.mlab.com:41593/heroku_mw2qqk3w`,
+// Connect to the Mongo DB    
+mongoose.connect(process.env.MONGODB_URI || `mongodb://${process.env.MLAB_USERNAME}:${process.env.MLAB_PASSWORD}@ds129422.mlab.com:29422/heroku_zdr1rv5s`,
 { 
     useNewUrlParser: true,
     useUnifiedTopology: true
