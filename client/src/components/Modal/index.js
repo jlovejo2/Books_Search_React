@@ -9,7 +9,7 @@ function Modal(props) {
             <div className="modal-background"></div>
             <div className="modal-card">
                 <header className="modal-card-head is-warning">
-                    <p className="modal-card-title">{props.title}</p>
+                    <h4 className="modal-card-title">{props.title}</h4>
                     <button className="delete" aria-label="close" onClick={props.closeButton}></button>
                 </header>
                 <section className="modal-card-body is-danger">
