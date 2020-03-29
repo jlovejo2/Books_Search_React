@@ -13,7 +13,7 @@ function Home(props) {
             />
             <Tile ancestor={true}>
                 <Tile parent={true}>
-                    <div className='content'>
+                    <div className='content welcome'>
                         <p>
                             Welcome to the Google Search App.  This app is powered by the google books api and allows the user to search by Author, Title, Subject, or Keyword.
                             Want to give it a try?  Then click on the search tab.  The saved tab will display all the books that you choose to save for later referencing.  The more dropdown and sign-up, login buttons are not functioning at this time.
